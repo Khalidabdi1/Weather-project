@@ -1,4 +1,7 @@
 {
   "welcome": "مرحباً خالد!",
-  "weather": "الطقس اليوم {{condition}}"
+  "weather": "الطقس اليوم {{condition}}",
+   "language":"الانجليزي",
+   "city":"الرياض"
+
 }

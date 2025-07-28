@@ -3,6 +3,7 @@ import './App.css';
 import axios from 'axios';
 import Header from './component/Header.js';
 import { useTranslation } from "react-i18next";
+import { useState } from 'react';
 
 let Weather_api=process.env.REACT_APP_WEATHER_API_KEY;
 let city="Riyadh"
@@ -28,19 +29,34 @@ let https = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${W
 
 function App() {
   let {t,i18n}=useTranslation()
-
+  let [language,setLanguage]=useState("en")
+console.log(language)
   return (
-    <div className="App">
+    <div className="App" style={{display:"flex",flexDirection:"column"}}>
       <div className='continer'> 
 
-        <Header city={city}/>
-<div>
-  <h1>{t("welcome")}</h1>
-  <button onClick={()=>{
-    i18n.changeLanguage("en")
-  }}> change</button>
-</div>
+        <Header city={city} Lan={language}/>
+
+
+
       </div>
+
+      {/* button than change language */}
+      <div style={{width: "300px",marginTop:"20px",direction:language==="ar"? "rtl":"ltr"}}>
+              <button style={{border:"none",outline:"none",backgroundColor:"transparent",color:"white"}}
+              onClick={()=>{
+                if(language==="en"){
+                  i18n.changeLanguage("en")
+                  setLanguage("ar")
+                }else if (language==="ar"){
+                  i18n.changeLanguage("ar")
+                  setLanguage("en")
+                }
+              }}>
+                {t("language")}
+                </button>
+        </div>
+
     </div>
   );
 }
