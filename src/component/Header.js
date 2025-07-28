@@ -25,6 +25,26 @@ let english={
       style:  {border:"1px solid white"}
     }
 }
+
+
+
+let arabic={
+      continer:{
+      style:{display:"flex",alignItems:"center",color:"white", direction: "rtl"}
+    },
+    // order here will change in Ar
+    h1:{
+        style:{order:"0",marginLeft:"10px"}
+    },
+        // order here will change in Ar
+
+    h4:{
+        style:{marginTop:"40px",marginLeft:"10px",order:"1"},
+    },
+    hr:{
+      style:  {border:"1px solid white"}
+    }
+}
 useEffect(()=>{
 if(Lan==="en"){
    moment.locale("en");
@@ -35,9 +55,9 @@ if(Lan==="en"){
 
     return(
         <>
-        {/* i need to change the language and style when is change */}
-        <div style={english.continer.style}>
-            <h1 style={english.h1.style}>{t("city")}</h1>
+        {/* i need to change the language and style when is change  */}
+        <div style={Lan==="en"? arabic.continer.style:english.continer.style  }>
+            <h1 style={Lan==="en"? arabic.h1.style:english.h1.style }>{t("city")}</h1>
             <h4 style={english.h4.style}>{moment().format("ll")}</h4>
           
         </div>
