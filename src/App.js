@@ -7,12 +7,12 @@ let city="Riyadh"
 let https=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${Weather_api}&units=metric&lang=ar`
 
 //api
-axios.get(https)
-.then((res)=>{
-  console.log(res.data)
-}).catch((err)=>{
-  console.log(err)
-})
+// axios.get(https)
+// .then((res)=>{
+//   console.log(res.data)
+// }).catch((err)=>{
+//   console.log(err)
+// })
 
 function App() {
   return (
