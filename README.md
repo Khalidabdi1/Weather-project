@@ -1,6 +1,8 @@
 this is weather app with react 
+### English Version
 
-![the weather app with english language](./asset/weather_with_english.png)
+![Weather English](./asset/weather_with_english.png)
 
+### النسخة العربية
 
-![the weather app with arabic language](./asset/weather_with_arabic.png)
+![Weather Arabic](./asset/weather_with_arabic.png)
