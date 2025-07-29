@@ -26,6 +26,11 @@ let [temp,setTemp]=useState(0)
 
   let {t,i18n}=useTranslation()
   let [language,setLanguage]=useState("en")
+  let [description,setDescription]=useState("")
+  let [min,setMin]=useState(0)
+  let [max,setMax]=useState(0)
+  let [iconUrl,setIconUrl]=useState(null)
+
 let https = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${Weather_api}&units=metric&lang=ar`;
 
 
@@ -35,27 +40,33 @@ let https = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${W
       .then((res)=>{
         console.log(res.data)
         setTemp(res.data.main.temp)
+        setDescription(res.data.weather[0].description)
+        setIconUrl(res.data.weather[0].icon)
+        setMax(res.data.main.temp_max)
+        setMin(res.data.main.temp_min)
+        //weather[0].description
       //main.temp
       }).catch((err)=>{
         console.log(err)
       })
 
 },[])
-
 useEffect(()=>{
   i18n.changeLanguage(language==="en"?"en":"ar")
 },[language])
 
-console.log(`temp is ${temp}`)
-
   return (
     <div className="App" style={{display:"flex",flexDirection:"column"}}>
-      <div className='continer'> 
+      <div className='continer'style={{height:"fit-content"}} > 
 
         <Header city={city} Lan={language}/>
 {/** here is weather info */}
-      <div >
-        <WeatherData data={temp}/>
+      <div style={{display:"flex"}}>
+           <WeatherData data={temp} description={description} max={max} min={min}/>
+
+          <div style={{width:"40%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center"}}>
+              <img src={`https://openweathermap.org/img/wn/${iconUrl}@4x.png`} style={{width:"300px",height:"300px"}}></img>
+          </div>  
       </div>
 
       </div>

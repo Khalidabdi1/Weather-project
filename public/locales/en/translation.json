@@ -2,5 +2,8 @@
   "welcome": "Welcome, Khalid!",
   "weather": "Weather today is {{condition}}",
   "language":"ARABICE",
-  "city":"RIYADH"
+  "city":"RIYADH",
+   "max":"max",
+   "min":"min"
+
 }
