@@ -61,10 +61,10 @@ useEffect(()=>{
 
         <Header city={city} Lan={language}/>
 {/** here is weather info */}
-      <div style={{display:"flex"}}>
+      <div style={{display:"flex",direction:language==="en"? "ltr":"rtl"}}>
            <WeatherData data={temp} description={description} max={max} min={min}/>
 
-          <div style={{width:"40%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center"}}>
+          <div style={{width:"40%",height:"100%",display:"flex",alignItems:"center",justifyContent:"center",order:"1"}}>
               <img src={`https://openweathermap.org/img/wn/${iconUrl}@4x.png`} style={{width:"300px",height:"300px"}}></img>
           </div>  
       </div>
