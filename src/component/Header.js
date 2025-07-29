@@ -7,7 +7,6 @@ import "moment/locale/ar"
 export default function Header({city,Lan}){
   let {t,i18n}=useTranslation()
 
-console.log(`lan is ${Lan}`)
 let english={
     continer:{
       style:{display:"flex",alignItems:"center",color:"white"}

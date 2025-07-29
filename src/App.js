@@ -7,15 +7,11 @@ import { useEffect, useState } from 'react';
 import WeatherData from './component/WeatherData.js';
 
 let Weather_api=process.env.REACT_APP_WEATHER_API_KEY;
-let city="Riyadh"
+let city="riyadh"
 
 
 
-//for weather icon :
-//https://openweathermap.org/img/wn/03n@4x.png
 
-
-//get api
 
 
 
@@ -31,14 +27,11 @@ let [temp,setTemp]=useState(0)
   let [max,setMax]=useState(0)
   let [iconUrl,setIconUrl]=useState(null)
 
-let https = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${Weather_api}&units=metric&lang=ar`;
+let https = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${Weather_api}&units=metric&lang=en`;
 
 
       useEffect(()=>{
-        console.log("useEffect Rernder")
-      axios.get(https)
-      .then((res)=>{
-        console.log(res.data)
+      axios.get(https).then((res)=>{
         setTemp(res.data.main.temp)
         setDescription(res.data.weather[0].description)
         setIconUrl(res.data.weather[0].icon)
