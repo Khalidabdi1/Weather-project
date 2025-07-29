@@ -3,40 +3,60 @@ import './App.css';
 import axios from 'axios';
 import Header from './component/Header.js';
 import { useTranslation } from "react-i18next";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import WeatherData from './component/WeatherData.js';
 
 let Weather_api=process.env.REACT_APP_WEATHER_API_KEY;
 let city="Riyadh"
 
 
-let https = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${Weather_api}&units=metric&lang=ar`;
 
 //for weather icon :
 //https://openweathermap.org/img/wn/03n@4x.png
 
 
 //get api
-axios.get(https)
-.then((res)=>{
-  console.log(res.data)
-  
 
-}).catch((err)=>{
-  console.log(err)
-})
 
 
 
 function App() {
+let [temp,setTemp]=useState(0)
+
+
   let {t,i18n}=useTranslation()
   let [language,setLanguage]=useState("en")
+let https = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${Weather_api}&units=metric&lang=ar`;
+
+
+      useEffect(()=>{
+        console.log("useEffect Rernder")
+      axios.get(https)
+      .then((res)=>{
+        console.log(res.data)
+        setTemp(res.data.main.temp)
+      //main.temp
+      }).catch((err)=>{
+        console.log(err)
+      })
+
+},[])
+
+useEffect(()=>{
+  i18n.changeLanguage(language==="en"?"en":"ar")
+},[language])
+
+console.log(`temp is ${temp}`)
+
   return (
     <div className="App" style={{display:"flex",flexDirection:"column"}}>
       <div className='continer'> 
 
         <Header city={city} Lan={language}/>
-
-
+{/** here is weather info */}
+      <div >
+        <WeatherData data={temp}/>
+      </div>
 
       </div>
 
